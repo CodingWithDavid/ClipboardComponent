@@ -1,0 +1,61 @@
+﻿@page "/"
+
+@using global::CopyableValue.Components
+
+<PageTitle>CopyableValue | Component demo</PageTitle>
+
+<section class="intro">
+    <p class="eyebrow">THE COMPONENT COLLECTION / 01</p>
+    <h1>A little less typing.<br />A lot less friction.</h1>
+    <p class="lede">Tokens, links, and reference numbers. One reliable way to get
+        the exact value where you need it.</p>
+</section>
+
+<section class="demo" aria-labelledby="demo-heading">
+    <div class="section-heading">
+        <h2 id="demo-heading">CopyableValue</h2>
+        <span class="badge">LIVE DEMO</span>
+    </div>
+    <p class="description">Choose a value below. Copy it. Make it yours.</p>
+
+    <div class="examples">
+        <CopyableValue Label="Email template token"
+                   Value="%%CustomerName%%"
+                   OnCopied="HandleCopied"
+                   OnCopyFailed="HandleCopyFailure" />
+        <CopyableValue Label="Test environment URL"
+                   Value="https://test.example.com/requests/10428"
+                   OnCopied="HandleCopied"
+                   OnCopyFailed="HandleCopyFailure" />
+        <details>
+            <summary>Explore more examples</summary>
+            <CopyableValue Label="Multiline snippet" Value="@Snippet"
+                       OnCopied="HandleCopied" OnCopyFailed="HandleCopyFailure" />
+            <CopyableValue Label="Empty value" Value="" />
+            <CopyableValue Label="Disabled value" Value="REF-10428" Disabled="true" />
+        </details>
+    </div>
+
+    <div class="callback">
+        <span class="callback-label">PARENT CALLBACK</span>
+        <p>@_pageMessage</p>
+    </div>
+</section>
+
+<ImageClipboard />
+
+<footer class="page-note">
+    <span>Small component. Thoughtful details.</span>
+    <span>Keyboard friendly / Accessible feedback / Exact-value copying</span>
+</footer>
+
+@code {
+    private const string Snippet = "  SELECT Id, Name\n  FROM Customers\n  WHERE Id = 10428;";
+    private string _pageMessage = "Copy a value to see the parent receive its event.";
+
+    private void HandleCopied(string value) =>
+        _pageMessage = $"{value} is ready to paste.";
+
+    private void HandleCopyFailure(string message) =>
+        _pageMessage = message;
+}

@@ -1,0 +1,14 @@
+:root { color-scheme: light; font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif; color: #23392b; background: #f3f5ed; }
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(ellipse at 90% 15%, #e8edde 0, transparent 55%); min-height: 100vh; }
+a { color: #256344; }
+button, input, textarea { font: inherit; }
+:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
+h1:focus { outline: none; }
+#blazor-error-ui { color: #581b16; background: #fff0ed; bottom: 0; box-shadow: 0 -1px 5px #0002; display: none; left: 0; padding: 1rem; position: fixed; width: 100%; z-index: 1000; }
+#blazor-error-ui .dismiss { cursor: pointer; position: absolute; right: 1rem; }
+.loading-progress { position: relative; display: block; width: 8rem; height: 8rem; margin: 20vh auto 1rem; }
+.loading-progress circle { fill: none; stroke: #d7ddd4; stroke-width: .4rem; transform-origin: 50% 50%; transform: rotate(-90deg); }
+.loading-progress circle:last-child { stroke: #284b38; stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * .8), 500%; transition: stroke-dasharray .05s ease-in-out; }
+.loading-progress-text { text-align: center; }
+.loading-progress-text:after { content: var(--blazor-load-percentage-text, "Loading"); }
